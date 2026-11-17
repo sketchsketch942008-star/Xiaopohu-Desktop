@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>版本更新日志与官方安装包 SHA256 校验清单 | 小泡狐桌面端</title>
+  <meta name="description" content="查看小泡狐云加速 Windows 客户端从 v2.0.0 至 v2.1.5 的完整更新历史、安全校验方法、SHA256 指纹与客户端版本回退说明。" />
+  <link rel="canonical" href="https://sketchsketch942008-star.github.io/Xiaopohu-Desktop/changelog.html" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <div class="brand">小泡狐桌面端文档中心 <small>v2.1.5 正式版</small></div>
+      <nav class="nav">
+        <a href="index.html">快速上手</a>
+        <a href="plans.html">套餐与点数</a>
+        <a href="ai-troubleshooting.html">AI 连接排障</a>
+        <a href="vpet-companion.html">桌面 AI 宠物</a>
+        <a class="active" href="changelog.html">版本与校验</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <span class="eyebrow">官方正版校验 · 支持版本中心一键安全回退</span>
+      <h1>版本更新日志与安全指纹核对</h1>
+      <p>
+        为确保您安装的客户端未被第三方篡改，建议无论通过官网、备用站还是 GitHub Releases 下载安装包，都在安装前核对下表精确字节体积与 <code>SHA256</code> 指纹。已安装的旧版客户端可直接通过左下角「检查更新」自动完成下载与完整性校验后静默升级。
+      </p>
+    </section>
+
+    <h2>最新正式版校验指纹（v2.1.5 · 2026-11-17 发布）</h2>
+    <div class="card">
+      <p><strong>安装包文件名：</strong><code>Xiaopohu-Client-Windows-2.1.5-x64-Setup.exe</code></p>
+      <p><strong>文件精确字节数：</strong><code>181,819,988</code> 字节（约 173.4 MB）</p>
+      <p><strong>SHA256 校验值：</strong><code>ee9b6201fddc10424864e0d53d1269c99c5d41ef28c4b19c0eb795549017b68d</code></p>
+      <pre>Get-FileHash .\Xiaopohu-Client-Windows-2.1.5-x64-Setup.exe -Algorithm SHA256</pre>
+    </div>
+
+    <h2>历代核心版本演进摘要</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>版本号</th>
+            <th>发布日期</th>
+            <th>关键特性与改进</th>
+            <th>SHA256</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>v2.1.5</strong>（当前最新）</td>
+            <td>2026-11-17</td>
+            <td>新增小泡狐「代理招募」与专属锁码客户端申领；升级多账号切换即时清零隔离与大文件断点续传；优化安装包自动关闭残留实例逻辑。</td>
+            <td><code>ee9b6201...017b68d</code></td>
+          </tr>
+          <tr>
+            <td><strong>v2.1.4</strong></td>
+            <td>2026-11-17</td>
+            <td>上线「卡网商城」秒级自动发卡、服务器软件直下扣流确认弹窗、新品首单按实付每 ¥5 送 100GB/30天福利及窄屏防重叠精调。</td>
+            <td><code>14b00cd6...4e6c62ed</code></td>
+          </tr>
+          <tr>
+            <td><strong>v2.1.1</strong></td>
+            <td>2026-11-15</td>
+            <td>接入 AI 智能客服矩阵、优化晚高峰抗抖动与并发处理、实现三专线节点与配额彻底解耦及双星备站上线。</td>
+            <td><code>d2f3fd51...75cf9ad</code></td>
+          </tr>
+          <tr>
+            <td><strong>v2.1.0</strong></td>
+            <td>2026-11-15</td>
+            <td>新增局域网「专属加速热点」实验特性、三线备站第一顺位容灾及全面中文规范精修。</td>
+            <td><code>281c8386...524252a9</code></td>
+          </tr>
+          <tr>
+            <td><strong>v2.0.2</strong></td>
+            <td>2026-11-10</td>
+            <td>上线显式检查更新弹窗、流式 SHA256/PE 头双重校验及「版本中心与一键安全回退」。</td>
+            <td><code>dbd57807...fe7b4edb1</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer class="site-footer">
+      <span><a href="index.html">返回文档首页</a></span>
+      <span><a href="https://xph-vip.pages.dev/downloads/Xiaopohu-Client-Windows-2.1.5-x64-Setup.exe">从官方通道下载 v2.1.5</a></span>
+    </footer>
+  </div>
+</body>
+</html>

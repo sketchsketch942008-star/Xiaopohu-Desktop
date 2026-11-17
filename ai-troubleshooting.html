@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI 工具（Gemini / Claude / ChatGPT / Cursor）连接与晚高峰排查手册 | 小泡狐</title>
+  <meta name="description" content="系统解决 Gemini 地区受限、Claude/ChatGPT 降智报错、Antigravity 与 Cursor 断连、Windows TUN 与系统代理冲突以及晚高峰延迟抖动的自查与解决流程。" />
+  <link rel="canonical" href="https://sketchsketch942008-star.github.io/Xiaopohu-Desktop/ai-troubleshooting.html" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <div class="brand">小泡狐桌面端文档中心 <small>v2.1.5 正式版</small></div>
+      <nav class="nav">
+        <a href="index.html">快速上手</a>
+        <a href="plans.html">套餐与点数</a>
+        <a class="active" href="ai-troubleshooting.html">AI 连接排障</a>
+        <a href="vpet-companion.html">桌面 AI 宠物</a>
+        <a href="changelog.html">版本与校验</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <span class="eyebrow">排障思路 · MetaCubeX 分流 · 自动容灾机制</span>
+      <h1>AI 工具连接异常、降智报错与晚高峰抖动排查指南</h1>
+      <p>
+        许多开发者遇到大模型工具提示地区不可用、突然频繁断流或国内网站同时变慢，往往不是账号本身异常，而是本地 DNS 泄漏、分流规则陈旧或出口协议未能平滑容灾导致的。以下是标准的四层定位方法。
+      </p>
+    </section>
+
+    <h2>一、为什么大模型（Gemini / Claude / ChatGPT）偶尔提示地区不受支持或频频降智？</h2>
+    <div class="card">
+      <p><strong>常见原因 1：分流漏网（仅代理了网页主域名，忽略了关联认证与 API 域名）。</strong><br />
+      现代 AI 应用往往同时请求身份认证、静态推理网关、WebSocket 长连接与遥测域名，若某个子域名误走直连，就会立刻触发地区风控判断。</p>
+      <p><strong>建议处理：</strong>小泡狐客户端 v2.1.5 默认内置 MetaCubeX 权威 <code>.mrs</code> 规则集并保持 24 小时自动热更新，在登录态下选择「自动容灾（网络切换不掉线）」模式即可统一接管完整 AI 域名家族。</p>
+    </div>
+
+    <h2>二、如何排查本地环境冲突（开启后打不开网页或命令行工具不生效）？</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>现象症状</th>
+            <th>高概率原因</th>
+            <th>快速解决操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>浏览器正常但 Cursor / Git / 终端无法连网</td>
+            <td>系统代理仅作用于浏览器，部分 CLI 或桌面端未读取系统 HTTP 代理</td>
+            <td>在客户端面板确认已开启「虚拟网卡 TUN」全栈接管，或在工具内配置本机代理端口</td>
+          </tr>
+          <tr>
+            <td>启用代理后所有国内网站同时大幅变慢</td>
+            <td>开启了全局模式（Global）而非规则模式，或之前残留了其他代理软件的冲突规则</td>
+            <td>退出其他同类网络工具，在客户端内点击「网络自愈」按钮并切回规则智能分流</td>
+          </tr>
+          <tr>
+            <td>多款同类工具交替安装后登录状态异常</td>
+            <td>旧客户端常驻后台锁住单实例或占用本机端口</td>
+            <td>升级安装 v2.1.5 后安装包会自动安全清理残留旧进程；若端口被第三方软件占用，先退出第三方程序再重启小泡狐</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>三、晚高峰（20:00 - 次日 02:00）延迟波动怎么应对？</h2>
+    <div class="card">
+      <p>跨洋宽带出口在每日晚高峰期间最容易发生单线路运营商绕路与丢包。小泡狐桌面端从底层采取了以下两层保障：</p>
+      <ul>
+        <li><strong>智能默认策略优先</strong>：主面板默认锁定「自动容灾」策略，仅当链路探测出现超时才会触发自动秒级平滑切换，无需人工盯着节点列表反复测速。</li>
+        <li><strong>主备网关与独立专线补充</strong>：若单一门户在某地运营商下连接变慢，可通过备用门户（<code>xph-bak.pages.dev</code>）同步数据，或按区域特点选配斯莫德 / 咩咩等独立线路作为冗余补充。</li>
+      </ul>
+    </div>
+
+    <h2>四、遇到问题直接利用内置 AI 智能客服定位</h2>
+    <p>客户端右下角与官网门户右下角均提供「AI 智能客服」，直接粘贴报错提示或说明使用软件（如 Antigravity、Cursor、Gemini CLI），可先一步拿到针对性的排查路径或提交售后工单处理。</p>
+
+    <footer class="site-footer">
+      <span><a href="index.html">返回文档首页</a></span>
+      <span><a href="plans.html">查看 5GB 体验与套餐方案</a></span>
+    </footer>
+  </div>
+</body>
+</html>

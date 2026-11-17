@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sketchsketch942008-star.github.io/Xiaopohu-Desktop/sitemap.xml
